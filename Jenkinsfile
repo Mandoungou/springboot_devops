@@ -28,6 +28,15 @@ pipeline {
                 sh './mvnw -B package -DskipTests'
             }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                echo 'Analyzing code with SonarQube...'
+                withSonarQubeEnv('SonarQube') {
+                    sh './mvnw -B sonar:sonar -Dsonar.projectKey=springboot-devops -Dsonar.projectName="Spring Boot DevOps"'
+                }
+            }
+        }
     }
 
     post {
