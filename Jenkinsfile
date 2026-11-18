@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo 'Analyzing code with SonarQube...'
                 withSonarQubeEnv('SonarQube') {
-                    sh './mvnw -B sonar:sonar -Dsonar.projectKey=springboot-devops -Dsonar.projectName="Spring Boot DevOps"'
+                    sh './mvnw -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=springboot-devops -Dsonar.projectName="Spring Boot DevOps"'
                 }
             }
         }
